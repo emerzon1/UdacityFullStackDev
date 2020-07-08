@@ -19,7 +19,7 @@ class Person(db.Model):
 
     #Defines how to print object:
     def __repr__(self):
-        return f'<Person ID: {self.id} name: {self.name}>'
+        return f'<Person ID:{self.id} name:{self.name}>'
 
 #creates tables for all models --> in this case people table.
 db.create_all()
@@ -32,3 +32,17 @@ def index():
 
 if __name__ == '__main__':
     app.run()
+
+'''
+Inside Python interactive shell (in Terminal)  --> How to add new People
+
+>>> import SQLAlchemyHelloWorld
+>>> from SQLAlchemyHelloWorld import Person, db
+>>> print(Person.query.first())
+<Person ID: 1 name: Evan>
+>>> person = Person(name='Amy')
+>>> db.session.add(person)
+>>> db.session.commit()
+>>> Person.query.all()
+[<Person ID:1 name:Evan>, <Person ID:2 name:Mark>, <Person ID:3 name:Amy>]
+'''
