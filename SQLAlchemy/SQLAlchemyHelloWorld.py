@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 #set URI to database to fetch info from it.
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://evanmerzon@localhost:5432/example'
-
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
@@ -16,6 +16,10 @@ class Person(db.Model):
     #Primary key is autoIncrementing.
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), nullable=False)
+
+    #Defines how to print object:
+    def __repr__(self):
+        return f'<Person ID: {self.id} name: {self.name}>'
 
 #creates tables for all models --> in this case people table.
 db.create_all()
