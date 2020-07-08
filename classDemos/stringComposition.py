@@ -32,6 +32,39 @@ cursor.execute('INSERT INTO table2 VALUES (%(id)s, %(bool)s);', {
 #commit to DB
 connection.commit()
 
+# BEST METHOD -->
+#VAR for reusable sql with dict:
+SQL = 'INSERT INTO table2 (id, completed) VALUES (%(id)s, %(bool)s);'
+#Use loop to create 30 rows with reusable SQL statemtn
+for i in range(20, 50):
+    cursor.execute(SQL, {
+        'id':i,
+        'bool':(i%2==0)
+    })
+
+connection.commit()
 #close connections, necessary
 connection.close()
 cursor.close()
+
+#USING PSQL -> Table looks like this with Query : SELECT id, completed FROM table2 WHERE completed='f' order by id;
+'''id | completed 
+----+-----------
+  2 | f
+  3 | f
+ 21 | f
+ 23 | f
+ 25 | f
+ 27 | f
+ 29 | f
+ 31 | f
+ 33 | f
+ 35 | f
+ 37 | f
+ 39 | f
+ 41 | f
+ 43 | f
+ 45 | f
+ 47 | f
+ 49 | f
+(17 rows)'''
