@@ -34,9 +34,7 @@ def create_todo():
     print(sys.exc_info())
   finally:
     db.session.close()
-  if error:
-    abort (400)
-  else:
+  if not error:
     return jsonify(body)
 
 @app.route('/todos/<todo_id>/set-completed', method=['POST'])
