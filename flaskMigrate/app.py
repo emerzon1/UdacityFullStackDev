@@ -9,6 +9,8 @@ command line:
 3. flask db migrate --> Creates migration file w/ upgrade/downgrade logic set up  (use when want to apply change or set up file to upgrade/downgrade)
 OTHER COMMANDS: flask db upgrade --> Runs upgrade function in migration file to apply upgrade
 OTHER COMMANDS: flask db downgrade --> Runs downgrade function in migration file to de-apply upgrade
+
+You can change migrate python files to change what the upgrade/downgrade scripts do
 '''
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
