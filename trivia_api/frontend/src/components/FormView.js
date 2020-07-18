@@ -24,7 +24,7 @@ class FormView extends Component {
         return;
       },
       error: (error) => {
-        alert('Unable to load categories. Please try your request again')
+        alert(error.message)
         return;
       }
     })
