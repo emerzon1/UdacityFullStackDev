@@ -34,7 +34,7 @@ class QuestionView extends Component {
         return;
       },
       error: (error) => {
-        alert('Unable to load questions. Please try your request again')
+        alert(error.message)
         return;
       }
     })
@@ -70,7 +70,7 @@ class QuestionView extends Component {
         return;
       },
       error: (error) => {
-        alert('Unable to load questions. Please try your request again')
+        alert(error.message)
         return;
       }
     })
@@ -78,7 +78,7 @@ class QuestionView extends Component {
 
   submitSearch = (searchTerm) => {
     $.ajax({
-      url: `/questions`, //TODO: update request URL
+      url: `/questions/search`, //TODO: update request URL
       type: "POST",
       dataType: 'json',
       contentType: 'application/json',
@@ -95,7 +95,7 @@ class QuestionView extends Component {
         return;
       },
       error: (error) => {
-        alert('Unable to load questions. Please try your request again')
+        alert(error.message)
         return;
       }
     })
@@ -111,7 +111,7 @@ class QuestionView extends Component {
             this.getQuestions();
           },
           error: (error) => {
-            alert('Unable to load questions. Please try your request again')
+            alert(error.message)
             return;
           }
         })

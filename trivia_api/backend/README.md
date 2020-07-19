@@ -72,9 +72,13 @@ This README is missing documentation of your endpoints. Below is an example for 
 
 Endpoints
 GET '/categories'
-GET ...
-POST ...
-DELETE ...
+GET '/questions'
+DELETE '/questions/<int:question_id>'
+POST '/questions'
+POST '/questions/search'
+GET '/categories/<int:category_id>/questions'
+POST '/quizzes'
+
 
 GET '/categories'
 - Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
@@ -87,6 +91,35 @@ GET '/categories'
 '5' : "Entertainment",
 '6' : "Sports"}
 
+GET '/questions'
+- Fetches an array of questions in which the questions show difficulty, answer, question, and category
+- Request Arguments: Page number
+- Returns: An array of dictionaries (the Q's) pagified, the total number of questions, and the categories
+
+DELETE '/questions/<int:question_id>'
+- Deletes specified question by method paramater
+- Request Arguments: None
+- Returns: {'message' : 'Delete Successful'}
+
+POST '/questions'
+- Creates new question using form
+- Request Arguments: Title, Category, Question, Answer
+- Returns: {'message' : 'success'}
+
+POST '/questions/search'
+- Uses search term to look for all the questions that contain the term
+- Request Arguments: Search term
+- Returns: New array of dictionaries (the questions) pagified only containing the questions that contain the search term, the total num Q's, and categories
+
+GET '/categories/<int:category_id>/questions'
+- Gets all questions that belong to the category specified
+- Request Arguments: None
+- Returns: New array of dictionaries (the questions) pagified only containing the questions are in the category, the total num Q's, and categories
+
+POST '/quizzes'
+- Gets a random questions that is in the specified category and not in prevQuestions
+- Request Arguments: Category, Previous questions
+- Returns: Question that fits the requirements
 ```
 
 
